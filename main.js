@@ -751,3 +751,21 @@ beeramid(454, 5);
 beeramid(455, 5);
 beeramid(0, 4);
 beeramid(4, 4);
+
+function add(x, y) {
+  if (x > 0) {
+    while (x > 0) {
+      x--;
+      a++;
+    }
+  }
+  if (x < 0) {
+    while (x < 0) {
+      x++;
+      a--;
+    }
+  }
+  console.log(x);
+}
+
+add(5, 6);
