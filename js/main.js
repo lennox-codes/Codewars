@@ -744,14 +744,6 @@ function beeramid(bonus, price) {
   }
 }
 
-beeramid(6, 2);
-beeramid(10, 2);
-beeramid(11, 2);
-beeramid(454, 5);
-beeramid(455, 5);
-beeramid(0, 4);
-beeramid(4, 4);
-
 // function add(x, y) {
 //   if (x > 0) {
 //     while (x > 0) {
@@ -769,3 +761,239 @@ beeramid(4, 4);
 // }
 
 // add(5, 6);
+
+let nextQuestion =
+  "https://www.codewars.com/kata/556b85b433fb5e899200003f/train/javascript";
+
+var moveZeros = function (arr) {
+  let nonZero = arr.filter((item) => item !== 0);
+  let zero = arr.filter((item) => item === 0);
+  return nonZero.concat(zero);
+};
+
+function mixedFraction(s) {
+  s = s.split("");
+  let dividend = "";
+  let divisor;
+
+  //first get the dividend
+  let i = 0;
+  while (s[i] !== "/") {
+    dividend += s[i];
+    i++;
+  }
+
+  //then get the divisor
+  s.forEach((char, index, array) => {
+    if (char === "/") divisor = Number(array.slice(index + 1).join(""));
+  });
+
+  //Return for zero error
+  if (divisor === 0) return "yam";
+  if (dividend === "0") return "0";
+
+  //Now let's do the evaluation.
+  const quotient = dividend / divisor;
+  let wholeNumber = quotient < 0 ? Math.ceil(quotient) : Math.floor(quotient);
+
+  let remainder = Math.abs(dividend % divisor);
+  divisor = Math.abs(divisor);
+
+  let gcd = getGcd(remainder, divisor);
+  if (wholeNumber === 0 && quotient < 0) {
+    return `-${remainder / gcd}/${divisor / gcd}`;
+  } else if (wholeNumber === 0 && quotient > 0) {
+    return `${remainder / gcd}/${divisor / gcd}`;
+  } else if (wholeNumber !== 0 && remainder === 0) {
+    return `${wholeNumber}`;
+  } else return `${wholeNumber} ${remainder / gcd}/${divisor / gcd}`;
+}
+
+//Utility function
+function getGcd(a, b) {
+  let r;
+  if (a == 0 || b == 0) return 1;
+  else {
+    while (a % b !== 0) {
+      r = a % b;
+      a = b;
+      b = r;
+    }
+    return b;
+  }
+}
+
+// function isPP(n) {
+//   let count = 0;
+
+//   let result;
+//   for (let i = 2; i <= n; i++) {
+//     for (let u = 2; u <= n - 1; u++) {
+//       if (i ** u === n) {
+//         result = [i, u];
+//         count++;
+//         i = n;
+//       }
+//     }
+//   }
+//   return count > 0 ? result : null;
+// }
+
+// function isPP(n) {
+//   for (let m = 2; m <= Math.floor(Math.sqrt(n)); m++) {
+//     for (let k = 2; m ** k <= n; k++) {
+//       if (m ** k === n) return [m, k];
+//     }
+//   }
+//   return null;
+// }
+
+// console.log(isPP(4));
+// console.log(isPP(8));
+// console.log(isPP(9));
+// console.log(isPP(256));
+// console.log(isPP(81));
+// console.log(isPP(2));
+// console.log(isPP(484));
+// console.log(isPP(2510));
+
+// function powerSumDigTerm(n) {
+//   let powerSum = [];
+//   for (let i = 2; i < 100; i++) {
+//     for (let u = 2; u <= 100; u++) {
+//       if (sumString(i ** u) === i) {
+//         powerSum.push(i ** u);
+//       }
+//     }
+//   }
+//   powerSum.sort((a, b) => a - b);
+//   return powerSum[n];
+// }
+
+// powerSumDigTerm(5);
+
+// //Utility function;
+// function sumString(i) {
+//   sum = i
+//     .toString()
+//     .split("")
+//     .reduce((a, b) => a + Number(b), 0);
+//   return sum;
+// }
+
+// console.log(sumString(81));
+// console.log(Math.sqrt(81));
+
+// function solution(number) {
+//   let multiplesOf3And5 = [];
+//   for (let i = 1; i < number; i++) {
+//     if (i % 3 === 0 || i % 5 === 0) {
+//       multiplesOf3And5.push(i);
+//     }
+//   }
+//   return multiplesOf3And5.reduce((a, b) => a + b, 0);
+// }
+
+// solution(10);
+
+// function findMissing(arr) {
+//   let prog = (arr[arr.length - 1] - arr[0]) / arr.length;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] + prog !== arr[i + 1]) return arr[i] + prog;
+//   }
+// }
+
+// console.log(findMissing([1, 3, 5, 9, 11]));
+
+function formatDuration(seconds) {
+  if (seconds === 0) return "now";
+  const secsInYear = 31536000;
+  const secsInDay = 86400;
+  const secsInHour = 3600;
+  const secsInMin = 60;
+
+  let years = Math.floor(seconds / secsInYear);
+  let days = Math.floor((seconds % secsInYear) / secsInDay);
+  let hours = Math.floor(((seconds % secsInYear) % secsInDay) / secsInHour);
+  let minutes = Math.floor(
+    (((seconds % secsInYear) % secsInDay) % secsInHour) / secsInMin
+  );
+  let secs = Math.floor(
+    (((seconds % secsInYear) % secsInDay) % secsInHour) % secsInMin
+  );
+
+  //Now this is done, Time to make the sequence of display.
+  let yearsStr;
+  let daysStr;
+  let hoursStr;
+  let minutesStr;
+  let secsStr;
+
+  if (years >= 0) yearsStr = `${years} year`;
+  if (days >= 0) daysStr = `${days} day`;
+  if (hours >= 0) hoursStr = `${hours} hour`;
+  if (minutes >= 0) minutesStr = `${minutes} minute`;
+  if (secs >= 0) secsStr = `${secs} second`;
+
+  //function to append the s if plural
+  function appendS(val, str) {
+    if (val > 1) return (str += "s");
+    else return str;
+  }
+
+  yearStr = appendS(years, yearsStr);
+  daysStr = appendS(days, daysStr);
+  hoursStr = appendS(hours, hoursStr);
+  minutesStr = appendS(minutes, minutesStr);
+  secsStr = appendS(secs, secsStr);
+
+  function list(time) {
+    let timeFormat = time
+      .map((time, index, array) => {
+        if (index !== array.length - 1 && index !== array.length - 2) {
+          return `${time},`;
+        } else if (index !== array.length - 1) {
+          return `${time} and`;
+        } else return time;
+      })
+      .join(" ");
+    return timeFormat;
+  }
+
+  //now let's combine them into an array.
+  let result = [yearStr, daysStr, hoursStr, minutesStr, secsStr];
+  result = result.filter((time) => time.slice(0, 1) !== "0");
+  //now lets work on how the results are displayed
+
+  return list(result);
+}
+
+console.log(formatDuration(90));
+
+// function parseInt(string) {
+//   let one = 1;
+//   let two = 2;
+//   let three = 3;
+//   let four = 4;
+//   let five = 5;
+//   let six = 6;
+//   let seven = 7;
+//   let eight = 8;
+//   let nine = 9;
+//   let ten = 10;
+//   let twenty = 20;
+//   let thirty = 30;
+//   let forty = 40;
+//   let fifty = 50;
+//   let sixty = 60;
+//   let seventy = 70;
+//   let eighty = 80;
+//   let ninety = 90;
+//   let hundred = "00";
+//   let thousand = "000";
+//   let million = "000000";
+//   string = string.replace("-", " ");
+//   console.log(string);
+// }
+
+// parseInt("two hundred and forty-six");
