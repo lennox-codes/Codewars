@@ -997,3 +997,207 @@ console.log(formatDuration(90));
 // }
 
 // parseInt("two hundred and forty-six");
+
+const numberToPrice = function (number) {
+  if (typeof number !== "number") return `NaN`;
+
+  let numberRounded = number;
+  let numberString = numberRounded.toString();
+  let decimal = "";
+  let sign = "";
+
+  //This handles 3 digit numbers.
+  // if (number > -1000 && number < 1000) console.log(numberRounded.toString());
+
+  if (numberString.includes(".")) {
+    numberString = numberString + "00";
+    let index = numberString.indexOf(".");
+    decimal = numberString.slice(index, index + 3);
+    numberString = numberString.slice(0, index);
+  } else decimal = ".00";
+
+  if (numberString.slice(0, 1) == "-") {
+    sign = "-";
+    numberString = numberString.slice(1);
+  }
+
+  numberString = addCommas(numberString);
+
+  console.log(sign + numberString + decimal);
+};
+
+// numberToPrice(-908.5678);
+// numberToPrice(-5.0);
+// numberToPrice(-183857984794.5678);
+// numberToPrice(18247394883382023038938403940349944324);
+// console.log(numberToPrice(""));
+
+function addCommas(str) {
+  str = str.split("").reverse();
+  modified = [];
+
+  modified = str.map((item, index, array) => {
+    if (index === 0) return item;
+    if (index % 3 === 0) {
+      return item + ",";
+    } else return item;
+  });
+
+  return modified.reverse().join("");
+}
+
+function perimeter(n) {
+  n = n + 1;
+  let startSeq = [1, 1];
+  for (let i = 0; i < n - 2; i++) {
+    startSeq.push(startSeq[i] + startSeq[i + 1]);
+  }
+  const fibonacci = startSeq.slice(0, n);
+  let perimeter = fibonacci.reduce((a, b) => a + 4 * b, 0);
+  console.log(fibonacci);
+  console.log(perimeter);
+}
+
+function sumDivRev(n) {
+  function reverse(num) {
+    return Number(num.toString().split("").reverse().join(""));
+  }
+
+  let i = 0;
+  count = 0;
+  let result;
+  while (count != n) {
+    let sum = reverse(i) + i;
+    let diff = Math.abs(i - reverse(i));
+    if (
+      sum % diff === 0 &&
+      reverse(i).toString().length === i.toString().length
+    ) {
+      count++;
+      result = i;
+    }
+    i++;
+  }
+  return result;
+}
+
+sumDivRev(65);
+
+// function reverse(num) {
+//   return Number(num.toString().split("").reverse().join(""));
+// }
+
+// console.log(reverse(90208383030));
+
+// function zero(operator) {
+//   return operator === undefined ? 0 : Math.floor(eval(0 + operator));
+// }
+// function one(operator) {
+//   return operator === undefined ? 1 : Math.floor(eval(1 + operator));
+// }
+// function two(operator) {
+//   return operator === undefined ? 2 : Math.floor(eval(2 + operator));
+// }
+// function three(operator) {
+//   return operator === undefined ? 3 : Math.floor(eval(3 + operator));
+// }
+// function four(operator) {
+//   return operator === undefined ? 4 : Math.floor(eval(4 + operator));
+// }
+// function five(operator) {
+//   return operator === undefined ? 5 : Math.floor(eval(5 + operator));
+// }
+// function six(operator) {
+//   return operator === undefined ? 6 : Math.floor(eval(6 + operator));
+// }
+// function seven(operator) {
+//   return operator === undefined ? 7 : Math.floor(eval(7 + operator));
+// }
+// function eight(operator) {
+//   return operator === undefined ? 8 : Math.floor(eval(8 + operator));
+// }
+// function nine(operator) {
+//   return operator === undefined ? 9 : Math.floor(eval(9 + operator));
+// }
+
+// function plus(value) {
+//   return "+" + value;
+// }
+// function minus(value) {
+//   return "-" + value;
+// }
+// function times(value) {
+//   return "*" + value;
+// }
+// function dividedBy(value) {
+//   return "/" + value;
+// }
+
+// console.log(one(dividedBy(one())));
+// console.log(seven(times(five())));
+// console.log(six(dividedBy(five())));
+
+function zero(operator) {
+  return operator ? operator(0) : 0; //this just check to see if the operator exists
+}
+
+function one(operator) {
+  return operator ? operator(1) : 1;
+}
+
+function two(operator) {
+  return operator ? operator(2) : 2;
+}
+
+function three(operator) {
+  return operator ? operator(3) : 3;
+}
+
+function four(operator) {
+  return operator ? operator(4) : 4;
+}
+
+function five(operator) {
+  return operator ? operator(5) : 5;
+}
+
+function six(operator) {
+  return operator ? operator(6) : 6;
+}
+
+function seven(operator) {
+  return operator ? operator(7) : 7;
+}
+function eight(operator) {
+  return operator ? operator(8) : 8;
+}
+
+function nine(operator) {
+  return operator ? operator(9) : 9;
+}
+
+function plus(rightVal) {
+  return function (leftVal) {
+    return leftVal + rightVal;
+  };
+}
+
+function minus(rightVal) {
+  return function (leftVal) {
+    return leftVal - rightVal;
+  };
+}
+
+function times(rightVal) {
+  return function (leftVal) {
+    return leftVal * rightVal;
+  };
+}
+
+function dividedBy(rightVal) {
+  return function (leftVal) {
+    return leftVal / rightVal;
+  };
+}
+
+console.log(one(plus()));
