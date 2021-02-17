@@ -317,3 +317,29 @@ console.log(decode([2, 12, 12, 20, 28, 30, 35, 41, 42, 45, 50]));
 console.log(encode(decode([2, 12, 12, 20, 28, 30, 35, 41, 42, 45, 50])));
 
 //give codewars a rest and build more applications. It don't matter if you don't rank too high. It's whatever.
+
+var compose = function () {
+  if (arguments.length == 1) return arguments[0];
+  else if (arguments.length == 0) return undefined;
+  else return Array.from(arguments).reduce((a, b) => b(a));
+};
+
+var doubleTheValue = function (val) {
+  return val * 2;
+};
+var addOneToTheValue = function (val) {
+  return val + 1;
+};
+
+//alternate solution to the question {
+// var compose = function (value) {
+//   for (let i = 1; i < arguments.length; i++) {
+//     value = arguments[i](value);
+//   }
+//   return value;
+// };
+
+console.log(compose(5, doubleTheValue));
+console.log(compose());
+console.log(compose(5)); // should === 10
+console.log(compose(5, doubleTheValue, addOneToTheValue)); // should === 11
