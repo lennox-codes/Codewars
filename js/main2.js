@@ -343,3 +343,43 @@ console.log(compose(5, doubleTheValue));
 console.log(compose());
 console.log(compose(5)); // should === 10
 console.log(compose(5, doubleTheValue, addOneToTheValue)); // should === 11
+
+
+switch (number) {
+    case 0:
+      result = "1111101";
+      break;
+    case 1:
+      result = "1010000";
+      break;
+    case 2:
+      result = "0110111";
+      break;
+    case 3:
+      result = "1010111";
+      break;
+    case 4:
+      result = "1011010";
+      break;
+    case 5:
+      result = "1001111";
+      break;
+    case 6:
+      result = "1101111";
+      break;
+    case 7:
+      result = "1010001";
+      break;
+    case 8:
+      result = "1111111";
+      break;
+    case 9:
+      result = "1011111";
+      break;
+  }
+  return parseInt(result, 2);
+}
+
+sevenSegmentNumber(1);
+let test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+test.forEach((number) => sevenSegmentNumber(number));
