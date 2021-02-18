@@ -344,8 +344,18 @@ console.log(compose());
 console.log(compose(5)); // should === 10
 console.log(compose(5, doubleTheValue, addOneToTheValue)); // should === 11
 
+function sevenSegmentNumber(number) {
+  if (number.toString().length > 1) throw new Error();
+  //Top Horizontal
+  //Middle Horizontal
+  //Bottom Horizontal
+  //Top-Left Vertical
+  //Top-Right Vertical
+  //Bottom-Left Vertical
+  //Bottom-Right Vertical
+  let result;
 
-switch (number) {
+  switch (number) {
     case 0:
       result = "1111101";
       break;
@@ -383,3 +393,60 @@ switch (number) {
 sevenSegmentNumber(1);
 let test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 test.forEach((number) => sevenSegmentNumber(number));
+
+//not my proudest function but it works
+function productFib(n) {
+  let Sequence = [0]; //defines the starting sequence as given by the
+  let results = [];
+  let firstElement = 0;
+  let secondElement = 1;
+  for (let i = 0; i <= n - 2; i++) {
+    Sequence.push(firstElement + secondElement);
+    if (Sequence[i] * Sequence[i + 1] === n) {
+      results.push(Sequence[i], Sequence[i + 1], true);
+      i = n;
+    } else if (Sequence[i] * Sequence[i + 1] > n) {
+      results.push(Sequence[i], Sequence[i + 1], false);
+      i = n;
+    }
+    firstElement = Sequence[i];
+    secondElement = Sequence[i + 1];
+  }
+  return results;
+}
+
+// var peakHeight = function (mountain) {
+//   let peak = 0;
+//   let newMountain = mountain.map((region) =>
+//     region.filter((character) => character !== " ")
+//   );
+
+//   for(let i = 0; i newMountain.lenght; i++)
+//   console.log(newMountain);
+// };
+
+// var mountain = [
+//   "^^^^^^        ".split(""),
+//   " ^^^^^^^^     ".split(""),
+//   "  ^^^^^^^     ".split(""),
+//   "  ^^^^^       ".split(""),
+//   "  ^^^^^^^^^^^ ".split(""),
+//   "  ^^^^^^      ".split(""),
+//   "  ^^^^        ".split(""),
+// ];
+
+// peakHeight(mountain);
+
+function domainName(url) {
+  let result;
+  if (url.indexOf("www") !== -1) {
+    let index = url.indexOf("www");
+    url = url.slice(index + 4);
+    result = url.slice(0, url.indexOf("."));
+  } else if (url.indexOf("https://") == 0) {
+    result = url.slice(8, url.indexOf("."));
+  } else if (url.indexOf("http://") == 0) {
+    result = url.slice(7, url.indexOf("."));
+  } else result = slice(0, url.indexOf("."));
+  return result;
+}
