@@ -450,3 +450,47 @@ function domainName(url) {
   } else result = slice(0, url.indexOf("."));
   return result;
 }
+
+function rot13(message) {
+  let rot13Message = message
+    .split("")
+    .map((character) => {
+      let ascii = character.charCodeAt();
+      if (ascii >= 65 && ascii <= 77) return String.fromCharCode(ascii + 13);
+      else if (ascii >= 78 && ascii <= 90)
+        return String.fromCharCode(ascii - 13);
+      else if (ascii >= 97 && ascii <= 109)
+        return String.fromCharCode(ascii + 13);
+      else if (ascii >= 110 && ascii <= 122)
+        return String.fromCharCode(ascii - 13);
+      else return character;
+    })
+    .join("");
+  return rot13Message;
+}
+
+function add(a, b) {
+  let finalSum = [];
+  let carry = 0;
+  //make both strings be of equal lengths by adding leading 0s to the shorter string;
+  if (a.length > b.length) b = "0".repeat(a.length - b.length) + b;
+  else if (b.length > a.length) a = "0".repeat(b.length - a.length) + a;
+
+  //now convert both a and b of into arrays of numbers;
+  a = a.split("").map((character) => Number(character));
+  b = b.split("").map((character) => Number(character));
+
+  //come up with an algorithm to add them up and you should be fine fine fine
+  for (let i = a.length - 1; i >= 0; i--) {
+    let digitsSum = carry + a[i] + b[i];
+    if (i == 0) finalSum.unshift(digitsSum.toString());
+    else if (digitsSum.toString().length > 1) {
+      finalSum.unshift(digitsSum.toString().slice(1));
+      carry = 1;
+    } else {
+      carry = 0;
+      finalSum.unshift(digitsSum.toString());
+    }
+  }
+  return finalSum.join("");
+}
