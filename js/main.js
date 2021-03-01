@@ -1199,32 +1199,3 @@
 // //     return leftVal / rightVal;
 // //   };
 // // }
-
-let label = "conestogacollege";
-let tld = "ca";
-
-let domainName = label + "." + tld;
-console.log(domainName);
-
-let isConestoga = domainName === "conestogacollege.ca";
-console.log(isConestoga);
-
-let isNotConestoga = domainName !== "conestogacollege.ca";
-console.log(isNotConestoga);
-
-let byte1, byte2, byte3, byte4;
-
-byte1 = 4;
-byte2 = 22;
-byte3 = 255;
-byte4 = 136;
-
-console.log(byte1.toString());
-console.log(byte2.toString(2));
-console.log(byte3.toString(16));
-
-let statusCode = 418; //I'm a teapot status code
-
-if (statusCode >= 400 && statusCode <= 499) {
-  console.log("status code is 400 client error");
-}

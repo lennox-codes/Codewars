@@ -391,7 +391,7 @@ function sevenSegmentNumber(number) {
 }
 
 sevenSegmentNumber(1);
-let test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 test.forEach((number) => sevenSegmentNumber(number));
 
 //not my proudest function but it works
@@ -486,7 +486,7 @@ function add(a, b) {
     if (i == 0) finalSum.unshift(digitsSum.toString());
     else if (digitsSum.toString().length > 1) {
       finalSum.unshift(digitsSum.toString().slice(1));
-      carry = 1;
+      carry = digitsSum.toString().Number(slice(0, 1));
     } else {
       carry = 0;
       finalSum.unshift(digitsSum.toString());
@@ -494,3 +494,38 @@ function add(a, b) {
   }
   return finalSum.join("");
 }
+
+//Return the max numbers of complete meals one can cook with their available ingredients based on the recipe provided
+function cakes(recipe, available) {
+  let amount = [];
+  for (let ingredient in recipe) {
+    //  if (!available[ingredient]) amount.push(0);
+    amount.push(Math.floor(available[ingredient] / recipe[ingredient]) || 0);
+    // }
+  }
+  console.log(amount.reduce((a, b) => Math.min(a, b)));
+}
+
+cakes(
+  { flour: 500, sugar: 200, eggs: 1 },
+  { flour: 1200, sugar: 1200, eggs: 5, milk: 200 }
+);
+// must return 0
+cakes(
+  { apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100 },
+  { sugar: 500, flour: 2000, milk: 2000 }
+);
+
+function expandedForm(num) {
+  let answer = [];
+  num
+    .toString()
+    .split("")
+    .forEach((digit, index, array) => {
+      answer.push(digit + "0".repeat(array.length - 1 - index));
+    });
+  return answer.filter((num) => Number(num) !== 0).join(" + ");
+}
+
+expandedForm(5555550);
+expandedForm(702383);
