@@ -529,3 +529,89 @@ function expandedForm(num) {
 
 expandedForm(5555550);
 expandedForm(702383);
+
+console.log(Number());
+
+function anagrams(word, words) {
+  let result = [];
+  words.forEach((combination) => {
+    if (checkAnagram(word, combination)) result.push(combination);
+  });
+  return result;
+}
+
+//Utility function
+// function checkAnagram(mainWord, word) {
+//   if (mainWord.length == word.length) {
+//     mainWord.split("").forEach((letter) => {
+//       if (word.includes(letter)) word = word.replace(letter, "");
+//     });
+//   } else return false;
+//   return word == "";
+// }
+
+// console.log(checkAnagram("abbay", "baba"));
+
+anagrams("racer", ["crazer", "carer", "racar", "caers", "racer"]);
+anagrams("laser", ["lazing", "lazy", "lacer"]);
+anagrams("abba", ["aabb", "abcd", "bbaa", "dada"]);
+
+function anagrams(word, words) {
+  return words.filter(
+    (w) => word.split("").sort().join("") == w.split("").sort().join("")
+  );
+}
+
+// function fparseInt(string) {
+//   let numberWords = {
+//     zero: 0,
+//     one: 1,
+//     two: 2,
+//     three: 3,
+//     four: 4,
+//     five: 5,
+//     six: 6,
+//     seven: 7,
+//     eight: 8,
+//     nine: 9,
+//     ten: 10,
+//     eleven: 11,
+//     twelve: 12,
+//     thirteen: 13,
+//     fourteen: 14,
+//     fifteen: 15,
+//     sixteen: 16,
+//     seventeen: 17,
+//     eighteen: 18,
+//     nineteen: 19,
+//     twenty: 20,
+//     thirty: 30,
+//     forty: 40,
+//     fifty: 50,
+//     sixty: 60,
+//     seventy: 70,
+//     eighty: 80,
+//     ninety: 90,
+//     hundred: 100,
+//     thousand: 1000,
+//     million: 1000000,
+//   };
+
+//   let result = [];
+//   let sum = [];
+//   let million = 0;
+//   let thousand = 0;
+//   let hundreds = 0;
+//   string = string.replace(" and ", " ");
+//   string = string.replace("-", " ");
+//   string.split(" ").forEach((word) => {
+//     result.push(numberWords[word]);
+//   });
+// }
+
+// fparseInt("two hundred and forty-six");
+// fparseInt("one");
+// fparseInt("one million two hundred and nineteen");
+// fparseInt(
+//   "one million seven hundred eighty-three thousand nine hundred and nineteen"
+// );
