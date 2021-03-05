@@ -637,22 +637,36 @@ function anagrams(word, words) {
 //   1
 // );
 
-function toCamelCase(str) {
-  str = str
-    .split("")
-    .map((char) => {
-      if (char == "_") return "-";
-      else return char;
-    })
-    .join("");
-  let result = str
-    .split("-")
-    .map((word, index) => {
-      if (index != 0) return word[0].toUpperCase() + word.slice(1);
-      else return word;
-    })
-    .join("");
-  return result;
-}
+// function toCamelCase(str) {
+//   str = str
+//     .split("")
+//     .map((char) => {
+//       if (char == "_") return "-";
+//       else return char;
+//     })
+//     .join("");
+//   let result = str
+//     .split("-")
+//     .map((word, index) => {
+//       if (index != 0) return word[0].toUpperCase() + word.slice(1);
+//       else return word;
+//     })
+//     .join("");
+//   return result;
+// }
 
-console.log(toCamelCase("the_stealth_warrior"));
+// console.log(toCamelCase("the_stealth_warrior"));
+
+// function findOdd(A) {
+//   let obj = {};
+//   A.forEach((num) => {
+//     if (obj.hasOwnProperty(num)) obj[num]++;
+//     else obj[num] = 1;
+//   });
+
+//   for (let int in obj) {
+//     if (obj[int] % 2 !== 0) return Number(int);
+//   }
+// }
+
+// findOdd([1, 2, 3, 1, 2, 1, 1]);
