@@ -615,3 +615,44 @@ function anagrams(word, words) {
 // fparseInt(
 //   "one million seven hundred eighty-three thousand nine hundred and nineteen"
 // );
+
+// function bingo(ticket, win) {
+//   let count = 0;
+//   let array = [];
+//   ticket.forEach((ticket) => {
+//     if (ticket[0].split("").some((char) => char.charCodeAt() == ticket[1])) {
+//       count++;
+//     }
+//   });
+
+//   return count >= win ? "Winner" : "Loser";
+// }
+
+// bingo(
+//   [
+//     ["ABC", 65],
+//     ["HGR", 74],
+//     ["BYHT", 74],
+//   ],
+//   1
+// );
+
+function toCamelCase(str) {
+  str = str
+    .split("")
+    .map((char) => {
+      if (char == "_") return "-";
+      else return char;
+    })
+    .join("");
+  let result = str
+    .split("-")
+    .map((word, index) => {
+      if (index != 0) return word[0].toUpperCase() + word.slice(1);
+      else return word;
+    })
+    .join("");
+  return result;
+}
+
+console.log(toCamelCase("the_stealth_warrior"));
