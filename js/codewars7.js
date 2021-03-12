@@ -53,7 +53,10 @@ function isPolydivisible(s, b) {
 
 //find within array
 //https://www.codewars.com/kata/51f082ba7297b8f07f000001/train/javascript
-
 function findInArray(array, iterator) {
-  return array.findIndex((value, index) => iterator(value, index) == true);
+  return array.findIndex((value, index) => iterator(value, index) === true);
 }
+
+//Word Mesh
+//https://www.codewars.com/kata/5c1ae703ba76f438530000a2/train/javascript
+function wordMesh(arr) {}
