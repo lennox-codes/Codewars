@@ -1,0 +1,41 @@
+//number of Carries
+kataURL = "https://www.codewars.com/kata/58a6568827f9546931000027";
+
+function numberOfCarries(a, b) {
+  let finalSum = [];
+  let numOfCarry = 0;
+  let carry = 0;
+  a = a.toString();
+  b = b.toString();
+  //make both strings be of equal lengths by adding leading 0s to the shorter string;
+  if (a.length > b.length) b = "0".repeat(a.length - b.length) + b;
+  else if (b.length > a.length) a = "0".repeat(b.length - a.length) + a;
+
+  //now convert both a and b of into arrays of numbers;
+  a = a.split("").map((character) => Number(character));
+  b = b.split("").map((character) => Number(character));
+
+  //come up with an algorithm to add them up and you should be fine fine fine
+  for (let i = a.length - 1; i >= 0; i--) {
+    let digitsSum = carry + a[i] + b[i];
+    if (i == 0) {
+      finalSum.unshift(digitsSum.toString());
+      if (digitsSum.toString().length > 1) {
+        numOfCarry++;
+      }
+    } else if (digitsSum.toString().length > 1) {
+      finalSum.unshift(digitsSum.toString().slice(1));
+      carry = 1;
+      numOfCarry++;
+    } else {
+      carry = 0;
+      finalSum.unshift(digitsSum.toString());
+    }
+  }
+  return numOfCarry;
+}
+
+//Tests
+numberOfCarries(9999, 1);
+numberOfCarries(1234, 5678);
+numberOfCarries(543, 3456);
