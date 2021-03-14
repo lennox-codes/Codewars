@@ -1,5 +1,5 @@
 //number of Carries
-kataURL = "https://www.codewars.com/kata/58a6568827f9546931000027";
+//"https://www.codewars.com/kata/58a6568827f9546931000027";
 
 function numberOfCarries(a, b) {
   let finalSum = [];
@@ -39,3 +39,21 @@ function numberOfCarries(a, b) {
 numberOfCarries(9999, 1);
 numberOfCarries(1234, 5678);
 numberOfCarries(543, 3456);
+
+//isPolydivisible
+//
+function isPolydivisible(s, b) {
+  let d = 1;
+  for (let i = 1; i <= s.length; i++) {
+    if (parseInt(s.slice(0, i), b) % d !== 0) return false;
+    d++;
+  }
+  return true;
+}
+
+//find within array
+//https://www.codewars.com/kata/51f082ba7297b8f07f000001/train/javascript
+
+function findInArray(array, iterator) {
+  return array.findIndex((value, index) => iterator(value, index) == true);
+}
