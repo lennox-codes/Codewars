@@ -57,6 +57,24 @@ function findInArray(array, iterator) {
   return array.findIndex((value, index) => iterator(value, index) === true);
 }
 
-//Word Mesh
-//https://www.codewars.com/kata/5c1ae703ba76f438530000a2/train/javascript
-function wordMesh(arr) {}
+//String array duplicates
+//https://www.codewars.com/kata/59f08f89a5e129c543000069/train/javascript
+function dup(s) {
+  return s.map((word) => removedup(word));
+}
+
+//Utility function
+function removedup(str) {
+  let result = str
+    .split("")
+    .map((char, i) => {
+      if (str[i] === str[i + 1]) return "";
+      else return char;
+    })
+    .filter((char) => char !== "")
+    .join("");
+  return result;
+}
+
+//Test
+dup(["ccooddddddewwwaaaaarrrrsssss", "piccaninny", "hubbubbubboo"]);
