@@ -119,3 +119,16 @@ function digPow(n, p) {
   }
   return -1;
 }
+
+//Try using recursion to solve this and you should be gucci
+function digital_root(n) {
+  return n.toString().length == 1
+    ? n
+    : digital_root(
+        n
+          .toString()
+          .split("")
+          .map((num) => Number(num))
+          .reduce((a, b) => a + b, 0)
+      );
+}
