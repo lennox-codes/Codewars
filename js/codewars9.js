@@ -132,3 +132,34 @@ function digital_root(n) {
           .reduce((a, b) => a + b, 0)
       );
 }
+
+function partsSums(arr) {
+  let result = [];
+  for (let i = arr.length; i >= 1; i--) {
+    let expression = arr.slice(-i).reduce((a, b) => a + b, 0);
+    console.log(arr.slice(-i));
+    result.push(expression);
+  }
+  result.push(0);
+  return result;
+}
+
+partsSums([0, 1, 3, 6, 10]);
+
+//Duplicate Count
+//https://www.codewars.com/kata/54bf1c2cd5b56cc47f0007a1/solutions/javascript
+function duplicateCount(text) {
+  text = text.toLowerCase().split("");
+  let obj = {};
+  for (let i = 0; i < text.length; i++) {
+    if (obj[text[i]]) obj[text[i]]++;
+    else obj[text[i]] = 1;
+  }
+
+  let count = 0;
+  for (let key in obj) {
+    if (obj[key] > 1) count++;
+  }
+
+  return count;
+}
