@@ -163,3 +163,17 @@ function duplicateCount(text) {
 
   return count;
 }
+
+//Bit Counting
+function countBits(num) {
+  let count = 0;
+  let result = [];
+  while (num / 2 > 0) {
+    result.unshift(num % 2);
+    num = Math.floor(num / 2);
+  }
+  result.forEach((num) => {
+    if (num == 1) count++;
+  });
+  return count;
+}
