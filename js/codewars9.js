@@ -1,4 +1,4 @@
-//6kyu Took longer than expected
+//6kyu //Took longer than expected
 //https://www.codewars.com/kata/55b3425df71c1201a800009c
 function stat(strg) {
   if (strg === "") return strg;
@@ -50,3 +50,19 @@ function humanReadable(seconds) {
 
 console.log(stat("01|15|59, 1|47|6, 01|17|20, 1|32|34, 2|3|17"));
 console.log(stat(""));
+
+//Find the missing letter
+//https://www.codewars.com/kata/5839edaa6754d6fec10000a2
+function findMissingLetter(array) {
+  let count = 0;
+  let index;
+  while (index === undefined) {
+    if (array[count].charCodeAt() - array[count + 1].charCodeAt() <= -2)
+      index = count;
+    else count++;
+  }
+  return String.fromCharCode(array[index].charCodeAt() + 1);
+}
+
+findMissingLetter(["a", "b", "c", "d", "f"]);
+console.log(findMissingLetter(["O", "Q", "R", "S"]));
