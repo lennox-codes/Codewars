@@ -177,3 +177,20 @@ function countBits(num) {
   });
   return count;
 }
+
+function firstDup(s) {
+  s = s.toString().split("");
+  dupArray = [];
+  nonDupArray = [];
+  s.forEach((char) => {
+    if (!dupArray.includes(char)) dupArray.push(char);
+    else nonDupArray.push(char);
+  });
+  console.log(dupArray);
+  console.log(nonDupArray);
+
+  for (let i = 0; i < dupArray.length; i++)
+    if (nonDupArray.includes(dupArray[i])) return dupArray[i];
+}
+
+console.log(firstDup("tweet"));
