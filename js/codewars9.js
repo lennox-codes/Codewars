@@ -66,3 +66,56 @@ function findMissingLetter(array) {
 
 findMissingLetter(["a", "b", "c", "d", "f"]);
 console.log(findMissingLetter(["O", "Q", "R", "S"]));
+
+//isPrime
+//https://www.codewars.com/kata/5262119038c0985a5b00029f/train/javascript
+function isPrime(num) {
+  let sqrt = Math.sqrt(num);
+  if (Number.isInteger(sqrt)) return false;
+  for (let i = 2; i < sqrt; i++) {
+    if (num % i == 0) return false;
+  }
+  return num > 1;
+}
+
+// function topThreeWords(text) {
+//   let words = text
+//     .toLowerCase()
+//     .split(", ")
+//     .map((char) => {
+//       return char.replaceAll(".", "").replaceAll("?", "");
+//     })
+//     .join(" ")
+//     .split(" ");
+//   console.log(words);
+
+//   let obj = {};
+//   for (let i = 0; i < words.length; i++) {
+//     if (obj[words[i]]) obj[words[i]]++;
+//     else obj[words[i]] = 1;
+//   }
+//   console.log(obj);
+// }
+
+// let text = `In a village of La Mancha, the name of which I have no desire to call to mind, there lived not long since one of those gentlemen that keep a lance in the lance-rack, an old buckler, a lean hack, and a greyhound for coursing. An olla of rather more beef than mutton, a salad on most
+// nights, scraps on Saturdays, lentils on Fridays, and a pigeon or so extra
+// on Sundays, made away with three-quarters of his income.`;
+
+// topThreeWords(text);
+
+function digPow(n, p) {
+  let Increment = p;
+  let numStr = n.toString();
+  let result = 0;
+  for (let i = 0; i < numStr.length; i++) {
+    result += Number(numStr.slice(i, i + 1)) ** Increment;
+    Increment++;
+  }
+
+  let k = 0;
+  while (k <= Math.sqrt(result)) {
+    if (result !== n * k) k++;
+    else return k;
+  }
+  return -1;
+}
