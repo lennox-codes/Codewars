@@ -229,3 +229,21 @@ function averageString(str) {
 averageString("zero nine five two");
 
 console.log([1, 2, 3, 5, 6, 6].includes(2 + 3));
+
+function comp(array1, array2) {
+  let count = 0;
+  if (array1 == null || array2 == null) return false;
+  array2.forEach((num) => {
+    if (array1.includes(Math.sqrt(num))) {
+      let index = array1.indexOf(Math.sqrt(num));
+      delete array1[index];
+      count++;
+    }
+  });
+  return count == array2.length;
+}
+
+const a1 = [1, 10, 4, 4, 0, 6, 9, 5, 7, 0];
+const a2 = [81, 1, 16, 16, 1, 100, 25, 0, 36, 49];
+
+console.log(comp(a1, a2));
