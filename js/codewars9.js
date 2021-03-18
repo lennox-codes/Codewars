@@ -194,3 +194,38 @@ function firstDup(s) {
 }
 
 console.log(firstDup("tweet"));
+
+function averageString(str) {
+  let numData = {
+    zero: 0,
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+    nine: 9,
+    ten: 10,
+  };
+
+  let count = 0;
+  str = str.split(" ");
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] == "zero") continue;
+    else if (!numData[str[i]]) return "n/a";
+    else {
+      count += numData[str[i]];
+    }
+  }
+
+  let average = Math.floor(count / str.length);
+  for (let key in numData) {
+    if (numData[key] == average) return key;
+  }
+}
+
+averageString("zero nine five two");
+
+console.log([1, 2, 3, 5, 6, 6].includes(2 + 3));
