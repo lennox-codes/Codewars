@@ -101,7 +101,7 @@ var animal = [
 //animal.forEach((val) => val == null || val == "");
 
 function sortAnimal(animal) {
-  let result = animal
+  return animal
     .slice()
     .sort(
       (a, b) => a.numberOfLegs - b.numberOfLegs || a.name.localeCompare(b.name)
@@ -111,3 +111,41 @@ function sortAnimal(animal) {
 }
 
 sortAnimal(animal);
+
+//Digit Recovery
+const alph = {
+  ZERO: 0,
+  ONE: 1,
+  TWO: 2,
+  THREE: 3,
+  FOUR: 4,
+  FIVE: 5,
+  SIX: 6,
+  SEVEN: 7,
+  EIGHT: 8,
+  NINE: 9,
+};
+
+//Binary to Decimal
+function decode(strng) {
+  let result = 0;
+  strng = strng.split("").map((char) => Number(char));
+  for (let i = 0; i < strng.length; i++) {
+    result += strng[i] * 2 ** (strng.length - 1 - i);
+  }
+  console.log(result);
+}
+
+decode("101101010100110110101010100101101001000");
+
+//Decimal to Binary
+function code(num) {
+  let result = [];
+  while (num / 2 > 0) {
+    result.unshift(num % 2);
+    num = Math.floor(num / 2);
+  }
+  console.log(result);
+}
+
+code(389346052936);
