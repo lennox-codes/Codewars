@@ -69,3 +69,16 @@ function iqTest(numbers) {
 }
 
 console.log(iqTest("2 4 7 8 10"));
+
+function songDecoder(song) {
+  let result = song
+    .split("WUB")
+    .join(" ")
+    .split(" ")
+    .filter((char) => char !== "")
+    .join(" ");
+  return result;
+}
+
+songDecoder("AWUBBWUBC");
+songDecoder("AWUBWUBWUBBWUBWUBWUBC");
