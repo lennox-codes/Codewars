@@ -54,3 +54,18 @@ function christmasTree(n) {
 }
 
 console.log(christmasTree(4));
+
+//
+
+function iqTest(numbers) {
+  numbers = numbers.split(" ").map((num) => Number(num));
+
+  let findEven = numbers.findIndex((num) => num % 2 === 0);
+  let findOdd = numbers.findIndex((num) => num % 2 !== 0);
+  numbers.splice(findOdd, 1, 0);
+
+  if (numbers.every((num) => num % 2 === 0)) return findOdd + 1;
+  else return findEven + 1;
+}
+
+console.log(iqTest("2 4 7 8 10"));
