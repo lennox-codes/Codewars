@@ -46,3 +46,10 @@ function pigIt(str) {
 
 pigIt("Pig latin is cool");
 pigIt("Hello world !");
+
+function spinWords(s) {
+  return s
+    .split(" ")
+    .map((word) => (word.length > 4 ? word.split("").reverse().join("") : word))
+    .join(" ");
+}
