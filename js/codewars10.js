@@ -82,3 +82,26 @@ function songDecoder(song) {
 
 songDecoder("AWUBBWUBC");
 songDecoder("AWUBWUBWUBBWUBWUBWUBC");
+
+function groupByCommas(n) {
+  n = n.toString().split("");
+  let result = [];
+  for (let i = n.length - 1; i >= 0; i -= 3) {
+    if (i == n.length - 1) continue;
+    n[i] = n[i] + ",";
+  }
+  return n.join("");
+}
+
+groupByCommas(1000000000);
+
+var encryptThis = function (text) {
+  if (text.length == 1) return text.charCodeAt();
+  let firstChar = text[0].charCodeAt();
+  secondChar = text[1];
+  lastChar = text[text.length - 1];
+  let result =
+    firstChar + lastChar + text.slice(2, text.length - 1) + secondChar;
+  console.log(result);
+};
+encryptThis("A");
