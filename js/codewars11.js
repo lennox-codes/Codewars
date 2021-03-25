@@ -53,3 +53,22 @@ function spinWords(s) {
     .map((word) => (word.length > 4 ? word.split("").reverse().join("") : word))
     .join(" ");
 }
+
+//Do Next
+//https://www.codewars.com/kata/51ba717bb08c1cd60f00002f/train/javascript
+
+var splitInteger = function (num, parts) {
+  let init = Math.floor(num / parts);
+
+  //Initialize the array
+  let result = new Array(parts).fill(init);
+
+  //iterate, checking the sum at each iteration and tweaking accordingly
+  for (i = 0; i < result.length; i++) {
+    if (result.reduce((a, b) => a + b, 0) == num) return result;
+    else result[i]++;
+  }
+};
+
+console.log(splitInteger(9, 7));
+console.log(splitInteger(80, 6));
