@@ -1,3 +1,3 @@
 # Codewars
 
-I will be pushing the solutions for daily coding challenges to this repo
+I will be pushing the solutions to codewars challenges to this repo
