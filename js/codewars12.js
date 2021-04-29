@@ -43,4 +43,17 @@ var list1 = [
   },
 ];
 
-console.log(findSenior(list1));
+//console.log(findSenior(list1));
+
+var findMedianSortedArrays = function (nums1, nums2) {
+  const mergeArray = nums1.concat(nums2);
+  const length = mergeArray.length;
+  const sortedArray = mergeArray.sort((a, b) => a - b);
+
+  console.log(sortedArray);
+  if (length % 2 === 0)
+    return (sortedArray[length / 2 - 1] + sortedArray[length / 2]) / 2;
+  else return sortedArray[Math.floor(length / 2)];
+};
+
+console.log(findMedianSortedArrays([1, 2, 3], [4]));
