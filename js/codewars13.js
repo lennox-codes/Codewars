@@ -98,7 +98,6 @@ function getOrder(input) {
     while (input.includes(item.toLowerCase())) {
       orders.push(item);
       input = input.replace(item.toLowerCase(), "");
-      console.log(input);
     }
   });
   return orders.join(" ");
