@@ -1,5 +1,4 @@
-const kataLink = "codewars.com/kata/578aa45ee9fd15ff4600090d/train/javascript";
-
+//Kata Link: codewars.com/kata/578aa45ee9fd15ff4600090d/train/javascript
 //Sort the Odd numbers but leave the even in position.
 
 function sortArray(arr) {
@@ -10,3 +9,17 @@ function sortArray(arr) {
 let test1 = [5, 8, 6, 3, 4];
 
 console.log(sortArray(test1));
+
+//Kata Link: https://www.codewars.com/kata/52180ce6f626d55cf8000071
+//Turn String Input into Hash
+function strToHash(str) {
+  let obj = {};
+  if (str === "") return obj;
+  else {
+    str = str
+      .split(", ")
+      .map((letter) => letter.split("="))
+      .forEach((arr) => (obj[arr[0]] = Number(arr[1])));
+    return obj;
+  }
+}
