@@ -24,9 +24,19 @@ function strToHash(str) {
   }
 }
 
+//Check if array of only integers
 function isIntArray(arr) {
-  if (!arr) return false;
-  return arr.every((num) => Number.isInteger(num));
+  return !arr ? false : arr.every((num) => Number.isInteger(num));
 }
 
-console.log(isIntArray(null));
+//console.log(isIntArray(null));
+
+//Find duplicate number
+function findDup(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr.indexOf(i) !== arr.lastIndexOf(i)) return i;
+  }
+}
+
+let test = [3, 2, 5, 1, 3, 4];
+console.log(findDup([3, 2, 5, 1, 3, 4]));
