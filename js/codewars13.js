@@ -23,3 +23,10 @@ function strToHash(str) {
     return obj;
   }
 }
+
+function isIntArray(arr) {
+  if (!arr) return false;
+  return arr.every((num) => Number.isInteger(num));
+}
+
+console.log(isIntArray(null));
