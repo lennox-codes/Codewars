@@ -40,3 +40,34 @@ function findDup(arr) {
 
 let test = [3, 2, 5, 1, 3, 4];
 console.log(findDup([3, 2, 5, 1, 3, 4]));
+
+//Add Commas to a number
+
+function longest(str) {
+  let max = "";
+  let current = "";
+  str += " ";
+
+  for (let i = 0; i < str.length - 1; i++) {
+    if (str[i] <= str[i + 1]) {
+      current += str[i];
+    } else {
+      current += str[i];
+      if (current.length > max.length) max = current;
+      current = "";
+    }
+  }
+  console.log(max);
+}
+
+class FileNameExtractor {
+  static extractFileName(dirtyFileName) {
+    const start = dirtyFileName.indexOf("_") + 1;
+    const end = dirtyFileName.lastIndexOf(".");
+    console.log(dirtyFileName.slice(start, end));
+  }
+}
+
+FileNameExtractor.extractFileName(
+  "1_FILE_NAME.EXTENSION.OTHEREXTENSIONadasdassdassds34"
+);
