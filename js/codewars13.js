@@ -42,7 +42,6 @@ let test = [3, 2, 5, 1, 3, 4];
 console.log(findDup([3, 2, 5, 1, 3, 4]));
 
 //Add Commas to a number
-
 function longest(str) {
   let max = "";
   let current = "";
@@ -60,6 +59,7 @@ function longest(str) {
   console.log(max);
 }
 
+//File Name Extractor
 class FileNameExtractor {
   static extractFileName(dirtyFileName) {
     const start = dirtyFileName.indexOf("_") + 1;
@@ -70,4 +70,40 @@ class FileNameExtractor {
 
 FileNameExtractor.extractFileName(
   "1_FILE_NAME.EXTENSION.OTHEREXTENSIONadasdassdassds34"
+);
+
+//Simple Sentences
+function makeSentence(parts) {
+  parts = parts.filter((word) => word != ".");
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (parts[i + 1] === ",") parts[i] = parts[i] + ",";
+  }
+  console.log(parts.filter((word) => word != ",").join(" ") + ".");
+}
+
+function getOrder(input) {
+  let orders = [];
+  const menu = [
+    "Burger",
+    "Fries",
+    "Chicken",
+    "Pizza",
+    "Sandwich",
+    "Onionrings",
+    "Milkshake",
+    "Coke",
+  ];
+
+  menu.forEach((item) => {
+    while (input.includes(item.toLowerCase())) {
+      orders.push(item);
+      input = input.replace(item.toLowerCase(), "");
+      console.log(input);
+    }
+  });
+  return orders.join(" ");
+}
+
+console.log(
+  getOrder("milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza")
 );
