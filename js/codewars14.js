@@ -96,3 +96,18 @@ function nthFibo(n) {
 }
 
 console.log(nthFibo(140));
+
+function splitString(str) {
+  str = str.length % 2 === 0 ? str : str + "_";
+  let len = str.length;
+  let result = [];
+  for (let i = 0; i < len / 2; i++) {
+    if (str.length === 1) str + "_";
+    result.push(str[0] + str[1]);
+    str = str.slice(2);
+    console.log(str);
+  }
+  return result;
+}
+
+console.log(splitString("a"));
