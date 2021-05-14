@@ -64,3 +64,11 @@ function sumExceptMinAndMax(arr) {
 console.log(ageStats([1, 2, 3, 5]));
 
 console.log(sumExceptMinAndMax([6, 2, 1, 8, 10]));
+
+function findUniq(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr.lastIndexOf(arr[i]) === arr.indexOf(arr[i])) return arr[i];
+  }
+}
+
+console.log(findUniq([1, 2, 1, 1, 1, 1]));
