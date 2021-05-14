@@ -72,3 +72,27 @@ function findUniq(arr) {
 }
 
 console.log(findUniq([1, 2, 1, 1, 1, 1]));
+
+function likes(names) {
+  if (names.length === 0) return "no one likes this";
+  else if (names.length === 1) return `${names[0]} likes this`;
+  else if (names.length === 2) return `${names[0]} and ${names[1]} likes this`;
+  else if (names.length === 3) return `${names[0]}, ${names[1]}, and ${names[2]} likes this`;
+  else return `${names[0]}, ${names[1]} and ${names.length - 2} likes this`;
+}
+
+function createPhoneNumber(numbers) {
+  numbers = numbers.join("");
+  return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 5)}-${numbers.slice(5)}`;
+}
+
+function nthFibo(n) {
+  let startSeq = [0, 1];
+  for (let i = 0; i < n; i++) {
+    startSeq.push(startSeq[i] + startSeq[i + 1]);
+    if (startSeq.length === n) break;
+  }
+  return startSeq[n - 1];
+}
+
+console.log(nthFibo(140));
