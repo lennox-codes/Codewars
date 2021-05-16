@@ -101,6 +101,7 @@ function splitString(str) {
   str = str.length % 2 === 0 ? str : str + "_";
   let len = str.length;
   let result = [];
+
   for (let i = 0; i < len / 2; i++) {
     if (str.length === 1) str + "_";
     result.push(str[0] + str[1]);
@@ -111,3 +112,93 @@ function splitString(str) {
 }
 
 console.log(splitString("a"));
+
+function countSheeps(arrayOfSheep) {
+  return `There are ${arrayOfSheep.join("").match(/true/g).join("").length / 4} sheeps in total`;
+  // let count = 0;
+  // arrayOfSheep.forEach((sheep) => (sheep ? count++ : count));
+  console.log(eggs);
+}
+
+var array1 = [
+  true,
+  true,
+  true,
+  false,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false,
+  true,
+  false,
+  true,
+  false,
+  false,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false,
+  false,
+  true,
+  true,
+];
+
+console.log(countSheeps(array1));
+
+function largestPairSum(numbers) {
+  return numbers
+    .sort((a, b) => b - a)
+    .slice(0, 2)
+    .reduce((a, b) => a + b);
+}
+
+console.log(largestPairSum([10, 14, 2, 23, 19]));
+
+function greetDevelopers(list) {
+  return list.map((person) => ({
+    person: person.firstName,
+    lastName: person.lastName,
+    country: person.country,
+    continent: person.continent,
+    age: person.age,
+    language: person.language,
+    greeting: `Hi, ${person.firstName}, what do you like the most about ${person.language}?`,
+  }));
+}
+
+var list1 = [
+  { firstName: "Sofia", lastName: "I.", country: "Argentina", continent: "Americas", age: 35, language: "Java" },
+  { firstName: "Lukas", lastName: "X.", country: "Croatia", continent: "Europe", age: 35, language: "Python" },
+  { firstName: "Madison", lastName: "U.", country: "United States", continent: "Americas", age: 32, language: "Ruby" },
+];
+
+console.log(greetDevelopers(list1));
+
+function firstNonConsecutive(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i + 1] - arr[i] !== 1) return arr[i + 1];
+  }
+  return null;
+}
+
+console.log(firstNonConsecutive([1, 2, 3, 4, 6, 7, 8]));
+function solve(arr) {
+  let result = [];
+  arr.reverse().forEach((num) => (!result.includes(num) ? result.push(num) : result));
+  return result;
+}
+
+var twoSum = function (nums, target) {
+  for (let i = 0; i < nums.length - 1; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      console.log(i, j);
+      if (nums[i] + nums[j] == target) return [i, j];
+    }
+  }
+};
+
+console.log(twoSum([3, 2, 3], 6));
