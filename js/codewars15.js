@@ -6,3 +6,8 @@
 // }
 
 // console.lchuckPushUps("hwo are we doin today");
+
+//Calculate the sum of the product of values at even indexes and the value at the last index
+const evenLast = (n) => n.reduce((a, c, i) => (i % 2 ? a : a + c * n[n.length - 1]), 0);
+
+console.table([2, 3, 4, 5]);
