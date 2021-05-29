@@ -75,5 +75,53 @@ function score(dice) {
 //   }, 0);
 // }
 
-console.log(score([2, 4, 5, 4, 4]));
-console.log(score([2, 3, 4, 6, 2]));
+//Worst way to do it but I'm just playing here bros
+function datingRange(age) {
+  return age > 14
+    ? Math.floor(age / 2 + 7) + "-" + Math.floor((age - 7) * 2)
+    : Math.floor(age - 0.1 * age) + "-" + Math.floor(age + 0.1 * age);
+}
+
+// console.log(score([2, 4, 5, 4, 4]));
+// console.log(score([2, 3, 4, 6, 2]));
+// console.log(datingRange(12));
+
+class Dinglemouse {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  getFullName() {
+    return (this.firstName + " " + this.lastName).trim();
+  }
+}
+
+function toFreud(string) {
+  return string.length
+    ? string
+        .split(" ")
+        .map((word) => "sex")
+        .join(" ")
+    : string;
+}
+
+Array.prototype.even = function () {
+  return this.filter((val) => Number.isInteger(val) && val % 2 === 0);
+};
+
+Array.prototype.odd = function () {
+  return this.filter((val) => Number.isInteger(val) && val % 2);
+};
+
+Array.prototype.under = function (x) {
+  return this.filter((val) => Number.isInteger(val) && val < x);
+};
+
+Array.prototype.over = function (x) {
+  return this.filter((val) => Number.isInteger(val) && val > x);
+};
+
+Array.prototype.inRange = function (min, max) {
+  return this.filter((val) => Number.isInteger(val) && val >= min && val <= max);
+};
