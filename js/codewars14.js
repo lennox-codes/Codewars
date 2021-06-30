@@ -5,7 +5,9 @@ function doubles(maxk, maxn) {
 
 function high(x) {
   scores = x.split(" ").map((word) => {
-    return word.split("").reduce((a, c) => c.toLowerCase().charCodeAt() - 96 + a, 0);
+    return word
+      .split("")
+      .reduce((a, c) => c.toLowerCase().charCodeAt() - 96 + a, 0);
   });
 
   return x.split(" ")[scores.indexOf(Math.max(...scores))];
@@ -77,7 +79,8 @@ function likes(names) {
   if (names.length === 0) return "no one likes this";
   else if (names.length === 1) return `${names[0]} likes this`;
   else if (names.length === 2) return `${names[0]} and ${names[1]} likes this`;
-  else if (names.length === 3) return `${names[0]}, ${names[1]}, and ${names[2]} likes this`;
+  else if (names.length === 3)
+    return `${names[0]}, ${names[1]}, and ${names[2]} likes this`;
   else return `${names[0]}, ${names[1]} and ${names.length - 2} likes this`;
 }
 
@@ -114,7 +117,9 @@ function splitString(str) {
 console.log(splitString("a"));
 
 function countSheeps(arrayOfSheep) {
-  return `There are ${arrayOfSheep.join("").match(/true/g).join("").length / 4} sheeps in total`;
+  return `There are ${
+    arrayOfSheep.join("").match(/true/g).join("").length / 4
+  } sheeps in total`;
   // let count = 0;
   // arrayOfSheep.forEach((sheep) => (sheep ? count++ : count));
   console.log(eggs);
@@ -171,9 +176,30 @@ function greetDevelopers(list) {
 }
 
 var list1 = [
-  { firstName: "Sofia", lastName: "I.", country: "Argentina", continent: "Americas", age: 35, language: "Java" },
-  { firstName: "Lukas", lastName: "X.", country: "Croatia", continent: "Europe", age: 35, language: "Python" },
-  { firstName: "Madison", lastName: "U.", country: "United States", continent: "Americas", age: 32, language: "Ruby" },
+  {
+    firstName: "Sofia",
+    lastName: "I.",
+    country: "Argentina",
+    continent: "Americas",
+    age: 35,
+    language: "Java",
+  },
+  {
+    firstName: "Lukas",
+    lastName: "X.",
+    country: "Croatia",
+    continent: "Europe",
+    age: 35,
+    language: "Python",
+  },
+  {
+    firstName: "Madison",
+    lastName: "U.",
+    country: "United States",
+    continent: "Americas",
+    age: 32,
+    language: "Ruby",
+  },
 ];
 
 console.log(greetDevelopers(list1));
@@ -188,7 +214,9 @@ function firstNonConsecutive(arr) {
 console.log(firstNonConsecutive([1, 2, 3, 4, 6, 7, 8]));
 function solve(arr) {
   let result = [];
-  arr.reverse().forEach((num) => (!result.includes(num) ? result.push(num) : result));
+  arr
+    .reverse()
+    .forEach((num) => (!result.includes(num) ? result.push(num) : result));
   return result;
 }
 
@@ -202,3 +230,24 @@ var twoSum = function (nums, target) {
 };
 
 console.log(twoSum([3, 2, 3], 6));
+
+// First method we sort and then we remove duplicates
+function mergeSortedArrays(a, b) {
+  const sortedArr = [...a, ...b].sort((a, b) => a - b);
+  const resultArr = [];
+
+  for (let i = 1; i < sortedArr.length; i++) {
+    if (sortedArr[i] === sortedArr[i - 1]) continue;
+    resultArr.push(sortedArr[i]);
+  }
+  return resultArr;
+}
+
+console.log(mergeSortedArrays([1, 2, 3], [2, 3, 5]));
+
+// First we remove duplicates and then we sort
+
+// function mergeSortedArrays(a, b) {
+//   const mergeArr = [...a, ...b];
+
+// }
