@@ -36,7 +36,7 @@ function countDuplicates(arr) {
 }
 
 const isPalindrome = (str) =>
-  str.split("").reverse().join("").toLowerCase() === str;
+  str.split("").reverse().join("").toLowerCase() === str.toLowerCase();
 
 const isPalindrome2 = (str) => {
   for (let i = 0; i < str.length / 2; i++) {
@@ -118,3 +118,17 @@ console.timeEnd();
 //      if(arr[i] < arr[i])
 //   }
 // }
+
+function splitToIndividual(arr) {
+  let result = [];
+  arr.forEach((element) =>
+    element
+      .toString()
+      .split("")
+      .forEach((number) => result.push(parseInt(number)))
+  );
+
+  return result;
+}
+
+console.log(splitToIndividual([142343243, 3423423423, 3423424]));
